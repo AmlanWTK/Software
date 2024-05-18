@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<CourseModel> courseModelArrayList = new ArrayList<CourseModel>();
 
-        // First, add items to your courseModelArrayList
+        // First, add items to your courseModelAehfhfjjy
         courseModelArrayList.add(new CourseModel("Classical", R.drawable.classical));
         courseModelArrayList.add(new CourseModel("AlternativeRock", R.drawable.alternativerock));
         courseModelArrayList.add(new CourseModel("Folk", R.drawable.folk));
