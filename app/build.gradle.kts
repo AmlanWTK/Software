@@ -42,6 +42,8 @@ dependencies {
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation ("androidx.test:runner:1.4.0")
     androidTestImplementation ("androidx.test:rules:1.4.0")
+    implementation ("com.google.firebase:firebase-database:20.0.3")  // Check for the latest version
+
 
 
 
@@ -51,3 +53,5 @@ dependencies {
 
     implementation ("com.github.jeancsanchez:JcPlayer:2.7.2")
 }
+
+apply(plugin="com.google.gms.google-services")

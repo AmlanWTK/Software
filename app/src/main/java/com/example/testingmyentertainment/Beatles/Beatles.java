@@ -20,6 +20,12 @@ import com.example.testingmyentertainment.Musics.Mohiner_Ghoraguli;
 import com.example.testingmyentertainment.Musics.MusicPlayer;
 import com.example.testingmyentertainment.Musics.PlayerActivity;
 import com.example.testingmyentertainment.R;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -35,10 +41,14 @@ public class Beatles extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mohinerghoraguli);
+
+
+
 
         String[] songNames = {"Across The Universe", "And I Love Her","Let It Be ","Lucy In The Sky","Ob-La-Di,Ob-Li-Da","Oh!Darling","A day In Life","Come Together","Don't Let Me Down","Eleanor Rigby","Hello, Goodbye","Help!","Here Comes The Sun","Hey Jude","I Feel Fine","I want To Hold Your Hand","Something",
                 "Strawberry Fields","While My Guiter Gently Weeps","Yellow Submarine"};
@@ -68,9 +78,13 @@ public class Beatles extends AppCompatActivity {
 
         };
 
+//        FirebaseApp.initializeApp(this);
+
         musicPlayer = new MusicPlayer(songNames, songUrls);
 
         listView = findViewById(R.id.listView);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Favorites");
+
 
 
 
@@ -81,6 +95,8 @@ public class Beatles extends AppCompatActivity {
             intent.putExtra("songUrls", songUrls); // pass array of song URLs
             startActivity(intent);
         });
+
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_songbeatles, R.id.item_song_title, songNames) {
             @NonNull
@@ -115,6 +131,7 @@ public class Beatles extends AppCompatActivity {
             }
         };
         listView.setAdapter(adapter);
+
 
         searchView = findViewById(R.id.search_view);
 
