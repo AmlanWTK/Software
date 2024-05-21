@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "118492822808",
+    "firebase_url": "https://onlinemusic-9f1a8-default-rtdb.firebaseio.com",
+    "project_id": "onlinemusic-9f1a8",
+    "storage_bucket": "onlinemusic-9f1a8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118492822808:android:0922d34f6a2bc8f060b26d",
+        "android_client_info": {
+          "package_name": "com.example.testingmyentertainment"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkCGZIqqWfuo2LAUeclF6WlQ-1N4T0DSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
