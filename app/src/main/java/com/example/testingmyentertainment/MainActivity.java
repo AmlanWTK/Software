@@ -35,16 +35,21 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     private GridView[] gridViews = new GridView[5];
-
     private ArrayList<CourseModel>[] courseLists = new ArrayList[5];
     private ArrayList<CourseModel> courseModelArrayList; // Declare here to make it accessible throughout the class
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        courseModelArrayList = new ArrayList<>();
+        populateCourseModelArrayList();
+        Log.d("size", String.valueOf(courseModelArrayList.size())); // Log the size of the list
+        initializeLists();
+        setupGridViews();
+    }
+
     private void populateCourseModelArrayList() {
-
-
-        ArrayList<CourseModel> courseModelArrayList = new ArrayList<CourseModel>();
-
-        // First, add items to your courseModelAehfhfjjy
         courseModelArrayList.add(new CourseModel("Classical", R.drawable.classical));
         courseModelArrayList.add(new CourseModel("AlternativeRock", R.drawable.alternativerock));
         courseModelArrayList.add(new CourseModel("Folk", R.drawable.folk));
@@ -58,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         courseModelArrayList.add(new CourseModel("Linkin Park", R.drawable.linkin));
         courseModelArrayList.add(new CourseModel("Pink Floyd", R.drawable.pinkfloyd));
         courseModelArrayList.add(new CourseModel("Metalica", R.drawable.metalica));
-
 
         courseModelArrayList.add(new CourseModel("Manna Dey", R.drawable.manna));
         courseModelArrayList.add(new CourseModel("Hemant Kumar", R.drawable.hemanta));
@@ -74,14 +78,12 @@ public class MainActivity extends AppCompatActivity {
         courseModelArrayList.add(new CourseModel("Anjan Datta", R.drawable.anjan));
         courseModelArrayList.add(new CourseModel("Nachiketa Chakraborty", R.drawable.nachi));
 
-
         courseModelArrayList.add(new CourseModel("Mohiner Ghoraguli", R.drawable.mohiner));
         courseModelArrayList.add(new CourseModel("Fossils", R.drawable.fossil));
         courseModelArrayList.add(new CourseModel("When Chai Meets Toast", R.drawable.cha));
         courseModelArrayList.add(new CourseModel("The Local Train", R.drawable.thelocaltrain));
         courseModelArrayList.add(new CourseModel("Cactus", R.drawable.cactus));
         courseModelArrayList.add(new CourseModel("Paarvaaz", R.drawable.paarvaaz));
-
 
         courseModelArrayList.add(new CourseModel("Shayan Chowdhury Arnob", R.drawable.arnab));
         courseModelArrayList.add(new CourseModel("Artcell", R.drawable.artcell));
@@ -90,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         courseModelArrayList.add(new CourseModel("Avash", R.drawable.avash));
         courseModelArrayList.add(new CourseModel("Ayub Bachchu", R.drawable.ayubbacchu));
 
-
         courseModelArrayList.add(new CourseModel("Black", R.drawable.black));
         courseModelArrayList.add(new CourseModel("Highway", R.drawable.highway));
         courseModelArrayList.add(new CourseModel("Joler Gan", R.drawable.jolergan));
@@ -98,22 +99,26 @@ public class MainActivity extends AppCompatActivity {
         courseModelArrayList.add(new CourseModel("Meghdol", R.drawable.meghdol));
         courseModelArrayList.add(new CourseModel("Miles", R.drawable.miles));
 
-
         courseModelArrayList.add(new CourseModel("Nagar James Baul", R.drawable.nagabaul));
         courseModelArrayList.add(new CourseModel("Nemesis", R.drawable.nemesis));
         courseModelArrayList.add(new CourseModel("Shayan", R.drawable.shayan));
         courseModelArrayList.add(new CourseModel("Shonar Bangla Circus", R.drawable.shonarbangla));
         courseModelArrayList.add(new CourseModel("Shironamhin", R.drawable.shoronamhin));
         courseModelArrayList.add(new CourseModel("Warfaze", R.drawable.warfaze));
-
     }
 
     private void initializeLists() {
+        if (courseModelArrayList == null) {
+            Log.e("InitializeLists", "courseModelArrayList is null");
+            return;  // Exit the method to avoid NullPointerException
+        }
+
         int size = courseModelArrayList.size();
-        int[] chunkSizes = {6, 6, 12, 6, 18};
+        int[] chunkSizes = {6, 6, 12, 6, 18}; // Define max items per list
         int startIndex = 0;
 
         for (int i = 0; i < courseLists.length; i++) {
+            courseLists[i] = new ArrayList<>(); // Initialize each element of courseLists
             if (startIndex >= size) {
                 break;  // Prevent further processing if startIndex exceeds list size
             }
@@ -121,11 +126,9 @@ public class MainActivity extends AppCompatActivity {
             if (startIndex < endIndex) {  // Ensure valid range
                 courseLists[i] = new ArrayList<>(courseModelArrayList.subList(startIndex, endIndex));
                 Log.d("InitializeLists", "startIndex: " + startIndex + ", endIndex: " + endIndex + ", size: " + size);
-
             }
             startIndex += chunkSizes[i];
         }
-
     }
 
     private void setupGridViews() {
@@ -139,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             gridViews[i].setOnItemClickListener(listener);
         }
     }
+
     private void onGridItemClick(AdapterView<?> parent, View view, int position, long id) {
         int gridIndex = Arrays.asList(gridViews).indexOf((GridView) parent);
         Intent intent = getIntentForPosition(gridIndex, position);
@@ -146,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
     private Intent getIntentForPosition(int gridIndex, int position) {
         Intent intent = new Intent(MainActivity.this, DetailActivity1.class); // Default intent
         // Define specific intents based on grid index and position
@@ -153,37 +158,24 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 intent = getFirstGridIntent(position);
                 break;
-
+            // Add cases for other grids if necessary
         }
         return intent;
     }
+
     private Intent getFirstGridIntent(int position) {
         switch (position) {
             case 0:
                 return new Intent(this, mohinerghoraguli.class);
             case 1:
-                return new Intent(this, DetailActivity.class);
+                return new Intent(this, Beatles.class);
             // Add more cases as necessary
         }
         return new Intent(this, DetailActivity1.class);
     }
 
     // Continue defining methods for other grid intents
-
-
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        courseModelArrayList = new ArrayList<CourseModel>();
-        populateCourseModelArrayList();
-        Log.d("size", String.valueOf(courseModelArrayList.size()));// Populate the list with course models
-        initializeLists();
-        setupGridViews();
-
-//
+}
 //        ArrayList<CourseModel> courseModelArrayList = new ArrayList<CourseModel>();
 //
 //        // First, add items to your courseModelAehfhfjjy
@@ -248,56 +240,6 @@ public class MainActivity extends AppCompatActivity {
 //        courseModelArrayList.add(new CourseModel("Shironamhin", R.drawable.shoronamhin));
 //        courseModelArrayList.add(new CourseModel("Warfaze", R.drawable.warfaze));
 //
-
-        SearchView searchView = findViewById(R.id.search_view);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                // Search for the query in courseModelArrayList
-                for (CourseModel course : courseModelArrayList) {
-                    if (course.getCourse_name().equalsIgnoreCase(query)) {
-                        // If a match is found, decide which activity to start based on the name
-                        Intent intent = null;
-                        switch (course.getCourse_name()) {
-                            case "Beatles":
-                                intent = new Intent(MainActivity.this, DetailActivity.class);
-                                break;
-                            case "AC/DC":
-                                intent = new Intent(MainActivity.this, DetailActivity1.class);
-                                break;
-                            // Add other cases for different course names and their corresponding activities
-                        }
-                        if (intent != null) {
-                            startActivity(intent);
-                            return true; // Return true indicating query handled
-                        }
-                        break; // Exit the loop once a match is found or handled
-                    }
-                }
-                Toast.makeText(MainActivity.this, "No match found", Toast.LENGTH_SHORT).show();
-                return false; // Return false if no match found
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                // Optional: Implement real-time search filtering if required
-                return false;
-            }
-        });
-
-    }}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
