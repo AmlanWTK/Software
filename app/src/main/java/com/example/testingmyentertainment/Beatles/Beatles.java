@@ -46,8 +46,9 @@ public class Beatles extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mohinerghoraguli);
 
-        String[] songNames1 = new String[3];
-        String[] songUrls1 = new String[3];
+        String[] songNames1 = new String[30];
+        String[] songUrls1 = new String[30];
+
         Intent i = getIntent();
         String nn = i.getStringExtra("name");
 
@@ -89,9 +90,9 @@ public class Beatles extends AppCompatActivity {
                                     Log.d("uindex", String.valueOf(nindex[0]));
                                     if(nindex[0] == uindex[0]){
                                         Log.d("wwplace", "inside block");
-                                        int sn = songNames1.length;
+                                        int sn = nindex[0];
                                         Log.d("sn", String.valueOf(sn));
-                                        int su = songUrls1.length;
+                                        int su = uindex[0];
                                         String[] songNames= new String[sn];
                                         String[] songUrls= new String[su];
                                         for(int i = 0; i<sn; i++){
