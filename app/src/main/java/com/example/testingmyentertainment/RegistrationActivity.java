@@ -23,7 +23,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-public class RegistrationActivity extends AppCompatActivity {
+public class
+RegistrationActivity extends AppCompatActivity {
 
     private EditText emailTextView, passwordTextView;
     private Button Btn;

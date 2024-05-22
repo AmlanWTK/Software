@@ -1,45 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/musical"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    android:padding="15dp"
+    android:padding="20dp"
     tools:context=".LoginActivity">
 
     <!-- TextView for heading -->
+
+    <!-- Edit text for email -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:text="Login"
+        android:textSize="35dp"
 
-    <!-- Edit text for email -->
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#1F305E"
+        android:textStyle="bold" />
+
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
+        android:fontFamily="@font/pacificoregular"
         android:layout_height="wrap_content"
-        android:hint="Enter your Email" />
+        android:layout_marginBottom="15dp"
+        android:background="#A4DDED"
+        android:hint="Enter your Email"
+        android:minHeight="48dp"
+        android:padding="10dp" />
 
     <!-- Edit text for password -->
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="#A4DDED"
         android:hint="Enter your Password"
-        android:inputType="textPassword" />
+        android:fontFamily="@font/pacificoregular"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:padding="10dp" />
 
     <!-- Button for Login with text "Login" -->
     <Button
         android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login" />
+
+        android:backgroundTint="#5072A7"
+        android:text="Login"
+        android:fontFamily="@font/pacificoregular"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
 
     <!-- ProgressBar for Loading Time -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:visibility="gone" />
 </LinearLayout>
