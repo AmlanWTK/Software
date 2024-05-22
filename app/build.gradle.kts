@@ -49,6 +49,12 @@ dependencies {
 
     implementation("com.google.firebase:firebase-storage:19.1.1");
 
+    implementation ("androidx.media3:media3-exoplayer:1.3.1")
+    implementation ("androidx.media3:media3-ui:1.3.1")
+    implementation ("androidx.media3:media3-common:1.3.1")
+    implementation ("com.squareup.picasso:picasso:2.71828")
+
+
 
 
 
