@@ -10,6 +10,7 @@ import android.app.MediaRouteButton;
 import android.os.Bundle;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -21,12 +22,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.AuthResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText emailTextView, passwordTextView;
     private Button Btn;
     private ProgressBar progressbar;
+    TextView reg;
 
     private FirebaseAuth mAuth;
     @Override
@@ -36,19 +39,33 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         // taking instance of FirebaseAuth
         mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Toast.makeText(this, "Already logged in", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(LoginActivity.this, ChooseActivity.class);
+            startActivity(intent);
+        }
 
         // initialising all views through id defined above
         emailTextView = findViewById(R.id.email);
         passwordTextView = findViewById(R.id.password);
         Btn = findViewById(R.id.login);
         progressbar = findViewById(R.id.progressBar);
-
+        reg = findViewById(R.id.Regid);
         // Set on Click Listener on Sign-in button
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
             {
                 loginUserAccount();
+            }
+        });
+
+        reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(LoginActivity.this, RegistrationActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -103,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                                     // intent to home activity
                                     Intent intent
                                             = new Intent(LoginActivity.this,
-                                            MainActivity.class);
+                                            ChooseActivity.class);
                                     startActivity(intent);
                                 }
 

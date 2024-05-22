@@ -15,9 +15,16 @@
         android:theme="@style/Theme.TestingMyEntertainment"
         tools:targetApi="31">
         <activity
+            android:name=".ChooseActivity"
+            android:exported="false" />
+        <activity
             android:name=".FirstActivity2"
-            android:exported="true">
+            android:exported="true"/>
 
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -25,11 +32,8 @@
         </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:exported="true"/>
-        <activity
             android:name=".RegistrationActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".Beatles.FavoriteSongsActivity"
             android:exported="false" />
@@ -65,9 +69,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

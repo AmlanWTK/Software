@@ -103,7 +103,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             // if the user created intent to login activity
                             Intent intent
                                     = new Intent(RegistrationActivity.this,
-                                    MainActivity.class);
+                                    ChooseActivity.class);
                             startActivity(intent);
                         }
                         else {
