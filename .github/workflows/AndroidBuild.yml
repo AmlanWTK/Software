@@ -2,9 +2,9 @@ name: AndroidBuild
 
 on:
   pull_request:
-    branches: [main, develop]
+    branches: [main, develop, AmlanCI]
   push:
-    branches: [main, develop]
+    branches: [main, develop, AmlanCI]
 
 jobs:
   build:
