@@ -12,6 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.testingmyentertainment.Videos.MainActivity1;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -53,6 +54,14 @@ public class ChooseActivity extends AppCompatActivity {
                 FirebaseUser currentUser = mAuth.getCurrentUser();
                 mAuth.signOut();
                 Intent intent = new Intent(ChooseActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        film.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ChooseActivity.this, MainActivity1.class);
                 startActivity(intent);
             }
         });
